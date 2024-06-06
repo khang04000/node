@@ -456,6 +456,10 @@ EnvironmentOptionsParser::EnvironmentOptionsParser() {
             "allow use of child process when any permissions are set",
             &EnvironmentOptions::allow_child_process,
             kAllowedInEnvvar);
+  AddOption("--allow-wasi",
+            "allow wasi when any permissions are set",
+            &EnvironmentOptions::allow_wasi,
+            kAllowedInEnvvar);
   AddOption("--allow-worker",
             "allow worker threads when any permissions are set",
             &EnvironmentOptions::allow_worker_threads,
@@ -473,6 +477,7 @@ EnvironmentOptionsParser::EnvironmentOptionsParser() {
   AddOption("--experimental-report", "", NoOp{}, kAllowedInEnvvar);
   AddOption(
       "--experimental-wasi-unstable-preview1", "", NoOp{}, kAllowedInEnvvar);
+  AddOption("--expose-gc", "expose gc extension", V8Option{}, kAllowedInEnvvar);
   AddOption("--expose-internals", "", &EnvironmentOptions::expose_internals);
   AddOption("--frozen-intrinsics",
             "experimental frozen intrinsics support",
